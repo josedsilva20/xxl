@@ -29,6 +29,13 @@ public class Cell {
         _content = content;
     }
 
+    public boolean equals(Cell cell){
+        return (_column == cell._column && _line == cell._line);
+    }
+
+    public Content getContent(){
+        return _content;
+    }
 
     /**
      * Represents toString from the content
