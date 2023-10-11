@@ -25,13 +25,17 @@ public class Spreadsheet implements Serializable {
   private int _columns;
   private List<User> _users;
   private CutBuffer _cutBuffer;
-  private
+  private boolean _changed;
 
-  public Spreadsheet (int rows, int columns){
+  public Spreadsheet (int rows, int columns) {
     _rows = rows;
     _columns = columns;
     _cells = new ArrayList<>();
     _users = new ArrayList<>();
+  }
+
+  public Spreadsheet(){
+
   }
   
   // FIXME define attributes
@@ -87,6 +91,6 @@ public class Spreadsheet implements Serializable {
    */
   void importFile(String filename) throws UnrecognizedEntryException, IOException /* FIXME maybe other exceptions */  {
     Parser parse = new Parser(this);
-    parse.parseFile(filename);
+    //parse.parseFile(filename);
   }
 }

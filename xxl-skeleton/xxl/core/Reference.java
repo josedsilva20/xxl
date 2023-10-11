@@ -21,10 +21,14 @@ public class Reference extends Content {
 
     Literal value(){
         return _spreadsheet.getCell(_row, _column).value();
+        // é possível uma referência apontar para outra referência?
+        // error em células vazias
     }
 
     public String toString() {
-        return _spreadsheet.getCell(_row, _column).getContent().toString();
+        //Content content =  _spreadsheet.getCell(_row, _column).getContent();
+        // porque é que compute é protected??
+        // value do function é public mas do content é protected
+        return "=" + _row + ";" + _column;
     }
-
 }
