@@ -1,5 +1,7 @@
 package xxl.core;
 
+import java.util.ArrayList;
+
 import xxl.core.exception.InvalidAsIntegerException;
 import xxl.core.exception.InvalidAsStringException;
 

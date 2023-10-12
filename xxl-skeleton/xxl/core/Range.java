@@ -13,6 +13,17 @@ public class Range {
     private int _endRow;
     private int _endColumn;
 
+    public Range(Cell begin, Cell end){
+        _beginColumn = begin.getColumn();
+        _beginRow = begin.getLine();
+        _endColumn = end.getColumn();
+        _endRow = end.getLine();
+    }
+
+    public Range getRange(){
+        return this;
+    }
+
     /**
      * 
      * @return cells in that range
@@ -26,5 +37,9 @@ public class Range {
             _beginColumn = begining;
         }
         return cells;
+    }
+
+    public String toString(){
+        return "(" + _beginRow + ";" + _beginColumn + ":" + _endRow + ";" + _endColumn + ")";
     }
 }

@@ -20,6 +20,14 @@ public class Cell {
         _column = column;
         _line = line;
     }
+
+    public int getLine(){
+        return _line;
+    }
+
+    public int getColumn(){
+        return _column;
+    }
     
     /**
      * Add content to cell

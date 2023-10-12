@@ -21,6 +21,7 @@ public class Reference extends Content {
 
     Literal value(){
         return _spreadsheet.getCell(_row, _column).value();
+        
         // é possível uma referência apontar para outra referência?
         // error em células vazias
     }
