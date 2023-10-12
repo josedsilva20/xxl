@@ -1,0 +1,33 @@
+*** tests/A-101-101-M-ok.out	Sat Oct  7 15:59:48 2023
+--- tests/A-101-101-M-ok.outhyp	Thu Oct 12 03:52:57 2023
+***************
+*** 14,24 ****
+  6 - Colar
+  7 - Mostrar 'cut buffer'
+  0 - Sair
+! Escolha uma opção: Especifique a gama (startline;startcol:endline;endcol): 1;1|5
+! 2;1|'111
+! 3;1|'ola
+! 4;1|3
+! Menu de Edição
+  1 - Visualizar
+  2 - Inserir
+  3 - Copiar
+--- 14,20 ----
+  6 - Colar
+  7 - Mostrar 'cut buffer'
+  0 - Sair
+! Escolha uma opção: Menu de Edição
+  1 - Visualizar
+  2 - Inserir
+  3 - Copiar
+***************
+*** 27,32 ****
+--- 23,29 ----
+  6 - Colar
+  7 - Mostrar 'cut buffer'
+  0 - Sair
++ Escolha uma opção: Número inválido!
+  Escolha uma opção: Menu Principal
+  1 - Novo
+  2 - Abrir

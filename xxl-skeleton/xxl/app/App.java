@@ -2,6 +2,8 @@ package xxl.app;
 
 import pt.tecnico.uilib.Dialog;
 import xxl.core.exception.ImportFileException;
+import xxl.core.exception.InvalidCellCoordinatesException;
+import xxl.core.exception.InvalidFunctionException;
 
 import java.io.IOException;
 
@@ -17,9 +19,9 @@ public class App {
       if (datafile != null) {
         try {
           receiver.importFile(datafile);
-        } catch (ImportFileException e) {
+        } catch (ImportFileException | InvalidFunctionException | InvalidCellCoordinatesException e) {
           // no behavior described: just present the problem
-          e.printStackTrace();
+          System.out.println("datafile");;
         }
       }
       

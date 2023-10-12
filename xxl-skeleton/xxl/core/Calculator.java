@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.ArrayList;
 
 import xxl.core.exception.ImportFileException;
+import xxl.core.exception.InvalidCellCoordinatesException;
+import xxl.core.exception.InvalidFunctionException;
 import xxl.core.exception.MissingFileAssociationException;
 import xxl.core.exception.UnavailableFileException;
 import xxl.core.exception.UnrecognizedEntryException;
@@ -123,7 +125,7 @@ public class Calculator {
    * @param filename name of the text input file
    * @throws ImportFileException
    */
-  public void importFile(String filename) throws ImportFileException {
+  public void importFile(String filename) throws ImportFileException, InvalidFunctionException, InvalidCellCoordinatesException {
     try {
       _spreadsheet.importFile(filename);
     } catch (IOException | UnrecognizedEntryException e) {

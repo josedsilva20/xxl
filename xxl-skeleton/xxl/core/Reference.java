@@ -15,6 +15,11 @@ public class Reference extends Content {
 
     }
 
+    public Reference(int row, int column){
+        _row = row;
+        _column = column;
+    }
+
     public Spreadsheet getSpreadsheet(){
         return _spreadsheet;
     }

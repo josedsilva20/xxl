@@ -9,8 +9,11 @@ import java.io.Serializable;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.lang.Integer;
 
 import xxl.core.exception.InexistentCellException;
+import xxl.core.exception.InvalidCellCoordinatesException;
+import xxl.core.exception.InvalidFunctionException;
 import xxl.core.exception.UnrecognizedEntryException;
 
 /**
@@ -59,11 +62,10 @@ public class Spreadsheet implements Serializable {
    * @param cell Cell created in app
    * @return true if cell exists
    */
-  public boolean isValidCell(Cell cell){
-      for (Cell c: _cells)
-      if (c.equals(cell))
-        return true;
-      return false;
+  public boolean isValidCell(int row, int column){
+      if (row > _rows || column > _columns || row < 1 || column < 1)
+        return false;
+      return true;
   }
 
 
@@ -82,6 +84,35 @@ public class Spreadsheet implements Serializable {
     return aux;
   }
 
+  Range buildRange(String range) throws NumberFormatException{
+    String[] rangeCoordinates;
+    int firstRow, firstColumn, lastRow, lastColumn;
+    
+    if (range.indexOf(':') != -1) {
+      rangeCoordinates = range.split("[:;]");
+      firstRow = Integer.parseInt(rangeCoordinates[0]);
+      firstColumn = Integer.parseInt(rangeCoordinates[1]);
+      lastRow = Integer.parseInt(rangeCoordinates[2]);
+      lastColumn = Integer.parseInt(rangeCoordinates[3]);
+    } else {
+      rangeCoordinates = range.split(";");
+      firstRow = lastRow = Integer.parseInt(rangeCoordinates[0]);
+      firstColumn = lastColumn = Integer.parseInt(rangeCoordinates[1]);
+    }
+
+    Cell c1 = new Cell(firstRow, firstColumn);
+    Cell c2 = new Cell(lastRow, lastColumn);
+
+    return new Range(c1, c2);
+  }
+
+  public void insertContent(int line, int column, Content content) 
+      throws InvalidCellCoordinatesException{
+    if (isValidCell(line, column))
+      throw new InvalidCellCoordinatesException();
+    getCell(line, column).setContent(content);
+  }
+
   /**
    * Read text input file and create corresponding domain entities.
    * 
@@ -89,8 +120,8 @@ public class Spreadsheet implements Serializable {
    * @throws UnrecognizedEntryException if some entry is not correct
    * @throws IOException if there is an IO erro while processing the text file
    */
-  void importFile(String filename) throws UnrecognizedEntryException, IOException /* FIXME maybe other exceptions */  {
+  void importFile(String filename) throws UnrecognizedEntryException, IOException, InvalidCellCoordinatesException, InvalidFunctionException  {
     Parser parse = new Parser(this);
-    //parse.parseFile(filename);
+    parse.parseFile(filename);
   }
 }
